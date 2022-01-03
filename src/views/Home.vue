@@ -1,25 +1,32 @@
 <template>
-  <div class="text-center">
-    <p>Home: {{ count }}</p>
-    <button class="btn btn-primary" @click="add">Count</button>
-  </div>
+  <div class="text-center"></div>
 </template>
 
 <script lang="ts">
+import { ethers } from "ethers";
+import { useEthers, displayEther } from "vue-dapp";
+import TodoListAbi from "../abi/TodoListAbi.json";
 export default {
   name: "Home",
 
-  data() {
+  setup() {
+    const { address, balance, chainId, isActivated, signer } = useEthers();
+    // create contract helper object
+    const contractInterface = new ethers.utils.Interface(TodoListAbi);
+    const contractAddress = "0x8Dec08063931947e0be134A294a0047bD9e39442";
+    const contract = new ethers.Contract(
+      contractAddress,
+      contractInterface,
+      signer.value
+    );
     return {
-      count: 0
-    }
+      address,
+      balance,
+      chainId,
+      isActivated,
+      displayEther,
+      contract,
+    };
   },
-
-  methods: {
-    add() {
-      this.count += 1;
-    }
-  },
-}
-
+};
 </script>
