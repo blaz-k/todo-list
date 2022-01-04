@@ -5,7 +5,7 @@
   <hr />
   <div class="wrapper">
     <div id="myDIV" class="header">
-      <h2 style="margin: 5px">To Do List</h2>
+      <h2 style="margin: 5px" class="mb-4">{{ dappName }}</h2>
       <input
         type="text"
         id="myInput"
@@ -33,8 +33,6 @@
 </template>
 
 <script lang="ts">
-// creeate method addTask()
-
 import { ethers } from "ethers";
 import { useEthers, displayEther } from "vue-dapp";
 import TodoListAbi from "../abi/TodoListAbi.json";
@@ -52,7 +50,7 @@ export default {
   data() {
     return {
       addTask: "",
-      dappName: "newTaskName",
+      dappName: "",
       allTasks: "show",
       byIndex: "2",
       taskStatus: "made",
