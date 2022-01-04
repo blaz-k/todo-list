@@ -1,24 +1,18 @@
 <template>
   <div class="text-center">
-    <h1>Homepage</h1>
-    <p>addTask: {{ addTask }}</p>
-    <p>dappName{{ dappName }}</p>
-    <div v-for="task in allTasks" :key="task">
-      <p>all Tasks: {{ task }}</p>
-    </div>
-    <p>all Tasks: {{ allTasks }}</p>
-
-    <p>INdex {{ byIndex }}</p>
-    <p>Status{{ taskStatus }}</p>
-    <p>taskslenght:{{ tasksLength }}</p>
-    <p>ToggleStatus {{ toggleStatus }}</p>
+    <p>NEW TASK: {{ newTask }}</p>
   </div>
-
+  <hr />
   <div class="wrapper">
     <div id="myDIV" class="header">
       <h2 style="margin: 5px">To Do List</h2>
-      <input type="text" id="myInput" placeholder="My Work..." />
-      <span onclick="newElement()" class="addBtn">Add</span>
+      <input
+        type="text"
+        id="myInput"
+        placeholder="To do..."
+        v-model="newTask"
+      />
+      <span class="addBtn" @click="addNewTask">Add</span>
     </div>
     <ul id="myUL">
       <div v-for="task in allTasks" :key="task">
@@ -47,13 +41,14 @@ export default {
   },
   data() {
     return {
-      addTask: "unknown",
+      addTask: "",
       dappName: "newTaskName",
       allTasks: "show",
       byIndex: "2",
       taskStatus: "made",
       tasksLength: "15",
       toggleStatus: true,
+      newTask: null,
     };
   },
   methods: {
@@ -72,12 +67,27 @@ export default {
     async contractTaskStatus() {
       this.taskStatus = await this.contract.getTaskStatus();
     },
-    //write
+
     async contractToggleTaskStatus() {
       this.toggleStatus = await this.contract.toggleTaskStatus();
     },
     async contractAddNewTask() {
       this.addTask = await this.contract.addNewTask();
+    },
+
+    //write
+
+    //  ADD NEW TASK IN TODO LIST
+    async addNewTask() {
+      const tx = await this.contract.addNewTask(this.newTask);
+      const receipt = await tx.wait();
+      if (receipt.status === 1) {
+        console.log("Transaction succeeded");
+        console.log(receipt);
+        this.contractAllTasks();
+      } else {
+        console.log("Transaction failed...");
+      }
     },
   },
 
