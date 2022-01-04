@@ -12,7 +12,17 @@
         placeholder="To do..."
         v-model="newTask"
       />
-      <span class="addBtn" @click="addNewTask">Add</span>
+
+      <span class="addBtn" @click="addNewTask" :disabled="spinner">Add</span>
+
+      <button class="btn btn-primary" type="button" disabled v-if="spinner">
+        <span
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        <span class="">Adding new task please wait...</span>
+      </button>
     </div>
     <ul id="myUL">
       <div v-for="task in allTasks" :key="task">
@@ -31,13 +41,13 @@ import TodoListAbi from "../abi/TodoListAbi.json";
 export default {
   name: "Home",
   created() {
-    this.contractAddNewTask();
+    // this.contractAddNewTask();
     this.contractDappName();
     this.contractAllTasks();
-    this.contractTaskByIndex();
-    this.contractTaskStatus();
-    this.contractTasksLength();
-    this.contractToggleTaskStatus();
+    // this.contractTaskByIndex();
+    // this.contractTaskStatus();
+    // this.contractTasksLength();
+    // this.contractToggleTaskStatus();
   },
   data() {
     return {
@@ -49,6 +59,7 @@ export default {
       tasksLength: "15",
       toggleStatus: true,
       newTask: null,
+      spinner: false,
     };
   },
   methods: {
@@ -79,15 +90,19 @@ export default {
 
     //  ADD NEW TASK IN TODO LIST
     async addNewTask() {
+      this.spinner = true;
       const tx = await this.contract.addNewTask(this.newTask);
       const receipt = await tx.wait();
       if (receipt.status === 1) {
         console.log("Transaction succeeded");
         console.log(receipt);
+        this.contractAddNewTask();
+
         this.contractAllTasks();
       } else {
         console.log("Transaction failed...");
       }
+      this.spinner = false;
     },
   },
 
