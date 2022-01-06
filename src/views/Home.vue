@@ -1,12 +1,16 @@
 <template>
   <div class="text-center">
-    <p>NEW TASK: {{ newTask }}</p>
+    <button class="fas fa-sync-alt" @click="contractAllTasks"></button>
+    <i class="fas fa-sync-alt" @click="refreshTasks"></i>
+    <p>REFRESH TASKS: {{ newTask }}</p>
+    <p>{{ isActivated }}</p>
   </div>
   <hr />
-  <div class="wrapper">
+  <div class="wrapper" v-if="isActivated">
     <div id="myDIV" class="header">
-      <h2 style="margin: 5px" class="mb-4">{{ dappName }}</h2>
+      <h2 style="margin: 5px" class="mb-4">My Todo List</h2>
       <input
+        class="obroba"
         type="text"
         id="myInput"
         placeholder="To do..."
@@ -26,7 +30,20 @@
     </div>
     <ul id="myUL">
       <div v-for="task in allTasks" :key="task">
-        <li>{{ task }}</li>
+        <Tasks :allTasksNames="task" />
+
+        <li v-if="newStatus">
+          <!-- <span
+            class="btn btn-outline-success"
+            v-if="!toggleStatus"
+            @click="changeStatus"
+            >Mark as done</span
+          > -->
+        </li>
+
+        <li v-if="!newStatus" class="">
+          {{ task }} toggle: {{ toggleStatus }} TASK DONE
+        </li>
       </div>
     </ul>
   </div>
@@ -36,55 +53,66 @@
 import { ethers } from "ethers";
 import { useEthers, displayEther } from "vue-dapp";
 import TodoListAbi from "../abi/TodoListAbi.json";
+import Tasks from "../components/Task.vue";
 export default {
   name: "Home",
+
   created() {
     // this.contractAddNewTask();
     this.contractDappName();
     this.contractAllTasks();
     // this.contractTaskByIndex();
     // this.contractTaskStatus();
-    // this.contractTasksLength();
     // this.contractToggleTaskStatus();
   },
+
   data() {
     return {
       addTask: "",
       dappName: "",
-      allTasks: "show",
-      byIndex: "2",
-      taskStatus: "made",
-      tasksLength: "15",
-      toggleStatus: true,
+      allTasks: "",
+      byIndex: null,
+      taskStatus: false,
+      toggleStatus: false,
       newTask: null,
       spinner: false,
+      isActivated: false,
+      newStatus: true,
     };
   },
+
   methods: {
+    //SHOW
     async contractDappName() {
       this.dappName = await this.contract.dappName();
     },
-    async contractTasksLength() {
-      this.tasksLength = await this.contract.getTasksLength();
-    },
+
     async contractAllTasks() {
       this.allTasks = await this.contract.getAllTasks();
     },
+
     async contractTaskByIndex() {
       this.byIndex = await this.contract.getTaskByIndex();
     },
-    async contractTaskStatus() {
-      this.taskStatus = await this.contract.getTaskStatus();
-    },
 
-    async contractToggleTaskStatus() {
-      this.toggleStatus = await this.contract.toggleTaskStatus();
-    },
-    async contractAddNewTask() {
-      this.addTask = await this.contract.addNewTask();
-    },
+    // async contractTaskStatus() {
+    //   this.taskStatus = await this.contract.getTaskStatus(this.allTasks);
+    //   console.log("contract status= " + this.taskStatus);
+    // },
 
-    //write
+    // async contractToggleTaskStatus() {
+    //   this.toggleStatus = await this.contract.toggleTaskStatus();
+    // },
+
+    // async contractTasksLength() {
+    //   this.tasksLength = await this.contract.getTasksLength();
+    // },
+
+    // async contractAddNewTask() {
+    //   this.addTask = await this.contract.addNewTask();
+    // },
+
+    // WRITE
 
     //  ADD NEW TASK IN TODO LIST
     async addNewTask() {
@@ -95,15 +123,20 @@ export default {
         console.log("Transaction succeeded");
         console.log(receipt);
         this.contractAddNewTask();
-
         this.contractAllTasks();
       } else {
         console.log("Transaction failed...");
       }
       this.spinner = false;
     },
-  },
 
+    //CHANGE STATUS OF TASK (FALSE --> TRUE)
+
+    refreshTasks() {
+      this.contractAllTasks();
+      console.log("all TASks");
+    },
+  },
   setup() {
     const { address, balance, chainId, isActivated, signer } = useEthers();
     // create contract helper object
@@ -123,9 +156,22 @@ export default {
       contract,
     };
   },
+  components: { Tasks },
 };
+
+// naredi ločeno komponento za taske
+
+// watcher
+
+// watcher contract izven setup-a v methods v eni funkciji
 </script>
 <style scoped>
+.obroba {
+  border-radius: 12px 86px;
+}
+.background {
+  color: chartreuse;
+}
 * {
   box-sizing: border-box;
 }
@@ -137,11 +183,12 @@ body {
 }
 .wrapper {
   background: #fff;
-  max-width: 400px;
+  max-width: 600px;
+  min-width: 350px;
   width: 100%;
   margin: 45px auto;
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 ul {
@@ -227,21 +274,9 @@ input {
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 0;
+  border-radius: 12px 86px;
 }
 .addBtn:hover {
-  background-color: #bbb;
-}
-.credit {
-  text-align: center;
-  color: #000;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  width: 100%;
-}
-.credit a {
-  text-decoration: none;
-  color: #072f5f;
-  font-weight: bold;
+  background-color: rgb(187, 187, 187);
 }
 </style>
