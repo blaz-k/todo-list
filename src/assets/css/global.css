@@ -1,0 +1,492 @@
+@media only screen and (min-device-width: 0) and (max-device-width: 340px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* HOME  */
+  #home .wrapper {
+    background: #fff;
+    max-width: 600px;
+    min-width: 250px;
+    width: 100%;
+    margin: 45px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+      0 6px 35px 0 rgba(94, 231, 231, 0.6);
+  }
+  #home .header {
+    background: linear-gradient(to bottom right, #21d4fd, #b721ff);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+  #home .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #home input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 12px;
+  }
+
+  #home .obroba {
+    border-radius: 10px 16px;
+  }
+  #home .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 10px 16px;
+  }
+
+  /* TASKS */
+
+  #task ul {
+    margin: 0;
+    padding: 0;
+  }
+  #task ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #task li {
+    margin-top: 10px;
+  }
+  #task h2 {
+    font-size: 0.6rem;
+    text-transform: capitalize;
+  }
+  #task span {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (min-device-width: 340px) and (max-device-width: 400px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* HOME  */
+  #home .wrapper {
+    background: #fff;
+    max-width: 600px;
+    min-width: 50px;
+    width: 100%;
+    margin: 45px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+      0 6px 35px 0 rgba(94, 231, 231, 0.6);
+  }
+  #home .header {
+    background: linear-gradient(to bottom right, #21d4fd, #b721ff);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+
+  #home input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 11px;
+  }
+  #home .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 12px 86px;
+  }
+
+  /* TASKS */
+
+  #task ul {
+    margin: 0;
+    padding: 0;
+  }
+  #task ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #task li {
+    margin-top: 10px;
+  }
+  #task h2 {
+    font-size: 0.7rem;
+    text-transform: capitalize;
+  }
+  #task span {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (min-device-width: 400px) and (max-device-width: 460px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* HOME  */
+  #home .wrapper {
+    background: #fff;
+    max-width: 600px;
+    min-width: 50px;
+    width: 100%;
+    margin: 45px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+      0 6px 35px 0 rgba(94, 231, 231, 0.6);
+  }
+  #home .header {
+    background: linear-gradient(to bottom right, #21d4fd, #b721ff);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+  #home .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #home input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 15px;
+  }
+  #home .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 12px 86px;
+  }
+
+  /* TASKS */
+
+  #task ul {
+    margin: 0;
+    padding: 0;
+  }
+  #task ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #task li {
+    margin-top: 10px;
+  }
+  #task h2 {
+    font-size: 0.9rem;
+    text-transform: capitalize;
+  }
+  #task span {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (min-device-width: 460px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* HOME  */
+  #home .wrapper {
+    background: #fff;
+    max-width: 600px;
+    min-width: 50px;
+    width: 100%;
+    margin: 45px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+      0 6px 35px 0 rgba(94, 231, 231, 0.6);
+  }
+  #home .header {
+    background: linear-gradient(to bottom right, #21d4fd, #b721ff);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+  #home .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #home input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 17px;
+  }
+  #home .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 12px 86px;
+  }
+
+  /* TASKS */
+
+  #task ul {
+    margin: 0;
+    padding: 0;
+  }
+  #task ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #task li {
+    margin-top: 10px;
+  }
+  #task h2 {
+    font-size: 1.1rem;
+    text-transform: capitalize;
+  }
+  #task span {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+  /* HOME  */
+  #home .wrapper {
+    background: #fff;
+    max-width: 600px;
+    min-width: 50px;
+    width: 100%;
+    margin: 45px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+      0 6px 35px 0 rgba(94, 231, 231, 0.6);
+  }
+  #home ul {
+    margin: 0;
+    padding: 0;
+  }
+  #home ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #home li {
+    margin-top: 10px;
+  }
+  #home ul li:nth-child(odd) {
+    background: #f9f9f9;
+  }
+  #home ul li:hover {
+    background: #ddd;
+  }
+  #home .header {
+    background: linear-gradient(to bottom right, #21d4fd, #b721ff);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+  #home .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #home input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 22px;
+  }
+  #home .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 12px 86px;
+  }
+
+  /* TASKS */
+
+  #task ul {
+    margin: 0;
+    padding: 0;
+  }
+  #task ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #task li {
+    margin-top: 10px;
+  }
+  #task h2 {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+  }
+  #task span {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  /* HOME  */
+  #home .wrapper {
+    background: #fff;
+    max-width: 700px;
+    min-width: 50px;
+    width: 100%;
+    margin: 45px auto;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+      0 6px 35px 0 rgba(94, 231, 231, 0.6);
+  }
+
+  #home .header {
+    background: linear-gradient(to bottom right, #21d4fd, #b721ff);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+  #home .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  #home input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 10px;
+    float: left;
+    font-size: 22px;
+  }
+  #home .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 12px 86px;
+  }
+
+  /* TASKS */
+
+  #task ul li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 29px;
+    transition: 0.2s;
+    border-radius: 10px;
+  }
+  #task li {
+    margin-top: 10px;
+  }
+  #task h2 {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+  }
+  #task span {
+    font-size: 20px;
+  }
+}
+
+/* @media screen and (min-device-width: 1024px) and (max-device-width: 1250px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+  #task h2 {
+    font-size: 0.5rem;
+    text-transform: capitalize;
+  }
+
+} */
+
+/* showing just screen over 1250px but not under*/
+/* @media only screen and (min-width: 1250px) {} */

@@ -1,51 +1,41 @@
 <template>
-  <div class="text-center">
-    <button class="fas fa-sync-alt" @click="contractAllTasks"></button>
-    <i class="fas fa-sync-alt" @click="refreshTasks"></i>
-    <p>REFRESH TASKS: {{ newTask }}</p>
-    <p>isActivated: {{ isActivated }}</p>
-  </div>
-  <hr />
-  <div class="wrapper" v-if="isActivated">
-    <div id="myDIV" class="header">
-      <h2 style="margin: 5px" class="mb-4">My Todo List</h2>
-      <input
-        class="obroba"
-        type="text"
-        id="myInput"
-        placeholder="To do..."
-        v-model="newTask"
-      />
-
-      <span class="addBtn" @click="addNewTask" :disabled="spinner">Add</span>
-
-      <button class="btn btn-primary" type="button" disabled v-if="spinner">
-        <span
-          class="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-        ></span>
-        <span class="">Adding new task please wait...</span>
-      </button>
+  <div id="home">
+    <div class="text-center">
+      <p>
+        REFRESH TODO LIST:
+        <i class="fas fa-sync-alt" @click="refreshTasks"></i>
+      </p>
+      <p>isActivated: {{ isActivated }}</p>
     </div>
-    <ul id="myUL">
-      <div v-for="task in allTasks" :key="task">
-        <Task :task="task" />
+    <hr />
+    <div class="wrapper" v-if="isActivated">
+      <div id="myDIV" class="header">
+        <h2 style="margin: 5px" class="mb-4">My Todo List</h2>
+        <input
+          class="obroba"
+          type="text"
+          id="myInput"
+          placeholder="To do..."
+          v-model="newTask"
+        />
 
-        <li v-if="newStatus">
-          <!-- <span
-            class="btn btn-outline-success"
-            v-if="!toggleStatus"
-            @click="changeStatus"
-            >Mark as done</span
-          > -->
-        </li>
+        <span class="addBtn" @click="addNewTask" :disabled="spinner">Add</span>
 
-        <li v-if="!newStatus" class="">
-          {{ task }} toggle: {{ toggleStatus }} TASK DONE
-        </li>
+        <button class="btn btn-primary" type="button" disabled v-if="spinner">
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          <span class="">Adding new task please wait...</span>
+        </button>
       </div>
-    </ul>
+      <ul id="myUL">
+        <div v-for="task in allTasks" :key="task">
+          <Task :task="task" />
+        </div>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -123,12 +113,14 @@ export default {
       if (receipt.status === 1) {
         console.log("Transaction succeeded");
         console.log(receipt);
+
         this.contractAddNewTask();
         this.contractAllTasks();
+        this.spinner = false;
       } else {
         console.log("Transaction failed...");
+        this.spinner = false;
       }
-      this.spinner = false;
     },
 
     //CHANGE STATUS OF TASK (FALSE --> TRUE)
@@ -175,42 +167,38 @@ export default {
     };
   },
 };
-
-// watcher
-
-// watcher contract izven setup-a v methods v eni funkciji
 </script>
-<style scoped>
-.obroba {
+
+<style>
+#home .obroba {
   border-radius: 12px 86px;
 }
-.background {
-  color: chartreuse;
-}
+
 * {
   box-sizing: border-box;
 }
-body {
+#home body {
   margin: 0;
   min-width: 250px;
   background-image: linear-gradient(to right bottom, #0093e9, #80d0c7);
   height: 100%;
 }
-.wrapper {
+#home .wrapper {
   background: #fff;
-  max-width: 600px;
+  max-width: 700px;
   min-width: 350px;
   width: 100%;
   margin: 45px auto;
   padding: 25px;
   border-radius: 25px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 48px 0 rgba(0, 151, 211, 0.8),
+    0 6px 35px 0 rgba(94, 231, 231, 0.6);
 }
-ul {
+#home ul {
   margin: 0;
   padding: 0;
 }
-ul li {
+#home ul li {
   cursor: pointer;
   position: relative;
   padding: 12px 8px 12px 40px;
@@ -220,57 +208,28 @@ ul li {
   transition: 0.2s;
   border-radius: 10px;
 }
-li {
+#home li {
   margin-top: 10px;
 }
-ul li:nth-child(odd) {
+#home ul li:nth-child(odd) {
   background: #f9f9f9;
 }
-ul li:hover {
+#home ul li:hover {
   background: #ddd;
 }
-ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-ul li.checked::before {
-  content: "";
-  position: absolute;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 2px 2px 0;
-  top: 10px;
-  left: 16px;
-  transform: rotate(45deg);
-  height: 15px;
-  width: 7px;
-}
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-.close:hover {
-  background-color: #f44336;
-  color: white;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.header {
+#home .header {
   background: linear-gradient(to bottom right, #21d4fd, #b721ff);
   padding: 30px 40px;
   color: white;
   text-align: center;
   border-radius: 15px;
 }
-.header:after {
+#home .header:after {
   content: "";
   display: table;
   clear: both;
 }
-input {
+#home input {
   margin: 0;
   border: none;
   border-radius: 0;
@@ -279,7 +238,7 @@ input {
   float: left;
   font-size: 16px;
 }
-.addBtn {
+#home .addBtn {
   padding: 10px;
   width: 25%;
   background: #d9d9d9;
@@ -291,7 +250,7 @@ input {
   transition: 0.3s;
   border-radius: 12px 86px;
 }
-.addBtn:hover {
+#home .addBtn:hover {
   background-color: rgb(187, 187, 187);
 }
 </style>
