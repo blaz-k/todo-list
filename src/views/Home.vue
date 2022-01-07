@@ -5,12 +5,11 @@
         REFRESH TODO LIST:
         <i class="fas fa-sync-alt" @click="refreshTasks"></i>
       </p>
-      <p>isActivated: {{ isActivated }}</p>
     </div>
     <hr />
     <div class="wrapper" v-if="isActivated">
       <div id="myDIV" class="header">
-        <h2 style="margin: 5px" class="mb-4">My Todo List</h2>
+        <h1 style="margin: 5px" class="mb-4">My Todo List</h1>
         <input
           class="obroba"
           type="text"

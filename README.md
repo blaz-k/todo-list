@@ -1,15 +1,24 @@
 # Todo List
 
-> Dapp Project
+`Web3 Dapp Project`
 
-[Smart Contract used in project](https://mumbai.polygonscan.com/address/0x5269d63d6d2c25ba95ae2cb9fd5b46f1e48635a8)
+[Link to <ins>Smart Contract</ins> used in project](https://mumbai.polygonscan.com/address/0x5269d63d6d2c25ba95ae2cb9fd5b46f1e48635a8)
 
 ## <ins>How does it work</ins>
 
+- First you need to connect your wallet
 - You have to be connected to `Mumbai Testnet`
 - When you add task, it will ask you to **_confirm_** transaction (otherwise it won't work)
+- When you finnish task, you press button `Mark done`, or if you change your mind, `Mark Undone`
 
-![](src/assets/)
+> First you connect your wallet
+
+![](src/assets/connect.png)
+<br>
+
+> Then you can start using app
+
+![](src/assets/todo.png)
 
 <hr>
 
