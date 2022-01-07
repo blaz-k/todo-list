@@ -3,7 +3,7 @@
     <button class="fas fa-sync-alt" @click="contractAllTasks"></button>
     <i class="fas fa-sync-alt" @click="refreshTasks"></i>
     <p>REFRESH TASKS: {{ newTask }}</p>
-    <p>{{ isActivated }}</p>
+    <p>isActivated: {{ isActivated }}</p>
   </div>
   <hr />
   <div class="wrapper" v-if="isActivated">
@@ -30,7 +30,7 @@
     </div>
     <ul id="myUL">
       <div v-for="task in allTasks" :key="task">
-        <Tasks :allTasksNames="task" />
+        <Task :task="task" />
 
         <li v-if="newStatus">
           <!-- <span
@@ -53,10 +53,10 @@
 import { ethers } from "ethers";
 import { useEthers, displayEther } from "vue-dapp";
 import TodoListAbi from "../abi/TodoListAbi.json";
-import Tasks from "../components/Task.vue";
+import Task from "../components/Task.vue";
 export default {
   name: "Home",
-  components: { Tasks },
+  components: { Task },
 
   created() {
     if (this.signer) {

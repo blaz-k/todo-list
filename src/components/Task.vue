@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ allTasksNames }}</h2>
+  <h2>{{ task }}</h2>
   <p>TASK STATUS: {{ this.taskStatus }},</p>
   <span
     class="btn btn-outline-success"
@@ -16,46 +16,33 @@ import TodoListAbi from "../abi/TodoListAbi.json";
 import { ethers } from "ethers";
 
 export default {
-  name: "Navbar",
-  props: ["allTasksNames"],
+  name: "Task",
+  props: ["task"],
   created() {
     this.contractTaskStatus();
-    this.contractToggleTaskStatus();
-    this.contractAllTasks();
+    // this.contractToggleTaskStatus();
+    // this.contractAllTasks();
   },
   data() {
     return {
-      taskName: "",
       taskStatus: false,
-      newTaskStatus: true,
-      toggleStatus: false,
-      allTasks: "",
     };
   },
 
   methods: {
     async contractTaskStatus() {
-      this.taskName = await this.contract.getTaskStatus(this.allTasksNames);
-    },
-    async contractToggleTaskStatus() {
-      this.toggleStatus = await this.contract.toggleTaskStatus();
-    },
-    async contractAllTasks() {
-      this.allTasks = await this.contract.getAllTasks();
+      this.taskStatus = await this.contract.getTaskStatus(this.task);
     },
 
     // WRITE
     async changeStatus() {
-      const tx = await this.contract.toggleTaskStatus(this.newTaskStatus);
+      const tx = await this.contract.toggleTaskStatus(String(this.task));
 
       const receipt = await tx.wait();
       if (receipt.status === 1) {
         console.log("Transaction succeeded");
         console.log(receipt);
-        this.taskStatus = true;
-
-        this.contractToggleTaskStatus();
-        this.contractAllTasks();
+        this.contractTaskStatus();
       } else {
         console.log("Transaction failed...");
       }
