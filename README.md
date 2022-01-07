@@ -8,7 +8,7 @@
 
 - First you need to connect your wallet
 - You have to be connected to `Mumbai Testnet`
-- When you add task, it will ask you to **_confirm_** transaction (otherwise it won't work)
+- When you add task, it will ask you to `confirm` transaction (otherwise it won't work)
 - When you finnish task, you press button `Mark done`, or if you change your mind, `Mark Undone`
 
 > First you connect your wallet
