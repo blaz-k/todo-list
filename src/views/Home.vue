@@ -56,15 +56,18 @@ import TodoListAbi from "../abi/TodoListAbi.json";
 import Tasks from "../components/Task.vue";
 export default {
   name: "Home",
+  components: { Tasks },
 
   created() {
+    if (this.signer) {
+      this.createContract();
+      this.contractAllTasks();
+    }
     // this.contractAddNewTask();
-    this.contractDappName();
-    this.contractAllTasks();
+
     // this.contractTaskByIndex();
     // this.contractTaskStatus();
     // this.contractToggleTaskStatus();
-    this.watchForChanges();
   },
 
   data() {
@@ -77,16 +80,13 @@ export default {
       toggleStatus: false,
       newTask: null,
       spinner: false,
-      isActivated: false,
       newStatus: true,
+      contract: null,
     };
   },
 
   methods: {
     //SHOW
-    async contractDappName() {
-      this.dappName = await this.contract.dappName();
-    },
 
     async contractAllTasks() {
       this.allTasks = await this.contract.getAllTasks();
@@ -135,33 +135,24 @@ export default {
 
     refreshTasks() {
       this.contractAllTasks();
-      console.log("Contractall tasks");
+      console.log("Contract all tasks");
     },
 
-    watchForChanges() {
-      const { address, balance, chainId, isActivated, signer } = useEthers();
-      // create contract helper object
+    createContract() {
       const contractInterface = new ethers.utils.Interface(TodoListAbi);
       const contractAddress = "0x5269d63d6d2c25Ba95AE2CB9fd5b46f1e48635a8";
-      const contract = new ethers.Contract(
+      this.contract = new ethers.Contract(
         contractAddress,
         contractInterface,
-        signer.value
+        this.signer
       );
-      return {
-        address,
-        balance,
-        chainId,
-        isActivated,
-        displayEther,
-        contract,
-      };
     },
   },
   watch: {
     //newValue is new value already defined, and oldValue is an old one
-    novaFunckija(newValue, oldValue) {
-      this.watchForChanges();
+    signer(newValue, oldValue) {
+      this.createContract();
+      this.contractAllTasks();
     },
   },
   setup() {
@@ -179,10 +170,10 @@ export default {
       chainId,
       isActivated,
       displayEther,
+      signer,
       contract,
     };
   },
-  components: { Tasks },
 };
 
 // watcher
