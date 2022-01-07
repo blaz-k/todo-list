@@ -64,6 +64,7 @@ export default {
     // this.contractTaskByIndex();
     // this.contractTaskStatus();
     // this.contractToggleTaskStatus();
+    this.watchForChanges();
   },
 
   data() {
@@ -134,12 +135,37 @@ export default {
 
     refreshTasks() {
       this.contractAllTasks();
-      console.log("all TASks");
+      console.log("Contractall tasks");
+    },
+
+    watchForChanges() {
+      const { address, balance, chainId, isActivated, signer } = useEthers();
+      // create contract helper object
+      const contractInterface = new ethers.utils.Interface(TodoListAbi);
+      const contractAddress = "0x5269d63d6d2c25Ba95AE2CB9fd5b46f1e48635a8";
+      const contract = new ethers.Contract(
+        contractAddress,
+        contractInterface,
+        signer.value
+      );
+      return {
+        address,
+        balance,
+        chainId,
+        isActivated,
+        displayEther,
+        contract,
+      };
+    },
+  },
+  watch: {
+    //newValue is new value already defined, and oldValue is an old one
+    novaFunckija(newValue, oldValue) {
+      this.watchForChanges();
     },
   },
   setup() {
     const { address, balance, chainId, isActivated, signer } = useEthers();
-    // create contract helper object
     const contractInterface = new ethers.utils.Interface(TodoListAbi);
     const contractAddress = "0x5269d63d6d2c25Ba95AE2CB9fd5b46f1e48635a8";
     const contract = new ethers.Contract(
@@ -158,8 +184,6 @@ export default {
   },
   components: { Tasks },
 };
-
-// naredi ločeno komponento za taske
 
 // watcher
 
