@@ -380,7 +380,7 @@
 
   #task ul {
     margin: 0;
-    padding: 0;
+    padding: -1;
   }
   #task ul li {
     display: flex;
