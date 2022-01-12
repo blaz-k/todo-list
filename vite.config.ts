@@ -4,5 +4,6 @@ import vue from '@vitejs/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  base: '/todo-list/',
+  base: process.env.NODE_ENV === "production" ? "/todo-list/" : "/",
+  
 })

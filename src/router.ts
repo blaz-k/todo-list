@@ -7,15 +7,16 @@ import Profile from './views/Profile.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
     path: '/todo-list',
     name: 'Home',
     component: Home,
   },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+
 
   {
     path: '/about',
