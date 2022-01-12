@@ -22,9 +22,12 @@
 
 <hr>
 
-# Vue 3 Dapp Starter (Options API, JS or TS, Bootstrap)
+## Github pages setup for typescript projects
 
-Forked from [chnejohnson/vue3-dapp-starter](https://github.com/chnejohnson/vue3-dapp-starter) and adapted to use Options API instead of the Composition API. Also, Bootstrap instead of Windi CSS.
+- add this line to vite.config.ts: `base: process.env.NODE_ENV === "production" ? "/todo-list/" : "/",`
+- add alias to home route like this: `alias: '/todo-list'`
+- make sure you have: `.github/workflows/main.yml`
+- on github go to Settings / Pages and select gh-pages branch
 
 ## Quickstart
 
