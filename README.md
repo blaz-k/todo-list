@@ -4,6 +4,8 @@
 
 [Link to <ins>Smart Contract</ins> used in project](https://mumbai.polygonscan.com/address/0x5269d63d6d2c25ba95ae2cb9fd5b46f1e48635a8)
 
+Link to website: [ https://blaz-k.github.io/todo-list/](https://blaz-k.github.io/todo-list/)
+
 ## <ins>How does it work</ins>
 
 - First you need to connect your wallet
