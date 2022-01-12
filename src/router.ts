@@ -6,15 +6,12 @@ import Profile from './views/Profile.vue'
 // For info on using Vue Router with the Composition API, see https://next.router.vuejs.org/guide/advanced/composition-api.html
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/todo-list',
-    name: 'Home',
-    component: Home,
-  },
+
   {
     path: '/',
     name: 'Home',
     component: Home,
+    alias: '/todo-list'
   },
 
 
